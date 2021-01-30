@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Example 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="vue-input">
+      <p>{{ message }}</p>
+      <input v-model="message">
+    </div>
+  </body>
+  <script>
+    var app_input = new Vue({
+      el: "#vue-input",
+      data : {
+        message: "Hi Mr Phuc!"
+      }
+    })
+  </script>
+</html>
