@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Example 2 </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <center>
+      <h1> Calculate the current age </h1>
+       First Name: <input type="text" v-model="firstname"> <br> <br>
+       Last Name: <input type="text" v-model="lastname"> <br> <br>
+       Email: <input type="text" v-model="email"> <br> <br>
+       Year Of Birth:  <input type="text" v-model="yearofbirth"> <br> <br>
+       <button type="button" v-on:click="click">Calculate</button>
+       <h1> Result </h1>
+       <p> {{ firstname }} </p>
+       <p> {{ lastname }}</p>
+       <p> Full Name: {{ fullName }} </p>
+       <p> Email: {{ getEmail }} </p>
+       <p> Year of birth: {{ getYearOfBirth }} </p>
+       <p> Age: {{ age }}</p>
+       </center>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: '#demo',
+      data: {
+        firstname: '',
+        lastname: '',
+        email: '',
+        yearofbirth: '',
+        age: '',
+      },
+      computed: {
+        fullName: {
+          get: function(){
+            return this.firstname + " " + this.lastname
+          },
+          set: function (newValue) {
+            var names = newValue.split(' ')
+            this.firstName = names[0]
+            this.lastName = names[names.length - 1]
+          }
+        },
+        getEmail: function(){
+          return this.email
+        },
+        getYearOfBirth: function(){
+          return this.yearofbirth
+        },
+      },
+      methods: {
+        click: function(){
+          let today = new Date();
+          let year = today.getFullYear();
+          let res_age = parseInt(year) - parseInt(this.yearofbirth)
+          this.age = res_age
+        }
+      }
+    })
+  </script>
+</html>
