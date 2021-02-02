@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Bind attribute</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id ="app-2">
+      <span v-bind:title="message">
+        Hover your mouse over me for a few seconds
+        to see my dynamically bound title!
+      </span>
+    </div>
+  </body>
+  <script>
+    var app2 = new Vue({
+      el: "#app-2",
+      data: {
+        message: "See me!",
+      }
+    })
+  </script>
+</html>

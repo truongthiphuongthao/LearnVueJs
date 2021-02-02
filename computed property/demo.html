@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="demo">
+      <center>
+      A: <input type="text" v-model="valueA">
+      <br> <br>
+      B: <input type="text" v-model="valueB">
+      <br> <br>
+      <button type="button" v-on:click="Addition">Addition</button>
+      <p> {{ getResult }}</p>
+      </center>
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: "#demo",
+      data: {
+        valueA: 0,
+        valueB: 0,
+        result: '',
+      },
+      methods: {
+        Addition: function(){
+          let res = parseInt(this.valueA) + parseInt(this.valueB)
+          this.result = res
+        }
+      },
+      computed : {
+        getResult : function() {
+          return this.result;
+        }
+      }
+
+
+
+    })
+  </script>
+</html>

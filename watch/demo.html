@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="watched_test">
+      Value A : <input type="text" v-model = "valueA">
+      Value B: <input type="text" v-model = "valueB">
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#watched_test',
+        data: {
+          valueA: 0,
+          valueB: 0
+        },
+        watch: {
+          valueA: function(val) {
+            this.valueA = val;
+            this.valueB = val * 2
+          },
+          valueB: function(val){
+            this.valueB = val
+            this.valueA = val/2
+          }
+        }
+      })
+    </script>
+  </body>
+
+</html>

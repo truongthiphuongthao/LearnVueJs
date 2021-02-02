@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="component_test">
+      <democomponent>  </democomponent>
+    </div>
+    <div id="component_test1">
+      <democomponent>  </democomponent>
+    </div>
+  </body>
+  <script>
+    Vue.component('democomponent', {
+      template: '<div> <h1> hello world </h1> </div>'
+    })
+    var app = new Vue({
+      el : '#component_test'
+    })
+    var app1 = new Vue({
+      el : '#component_test1'
+    })
+  </script>
+</html>

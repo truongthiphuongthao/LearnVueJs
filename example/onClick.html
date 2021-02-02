@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Loop</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="app-6">
+      <button v-on:click="clickMe"> Click </button>
+      <p> {{ message }} </p>
+    </div>
+  </body>
+  <script>
+    var app6 = new Vue({
+      el: "#app-6",
+      data: {
+        message: ''
+      },
+      methods: {
+        clickMe: function(){
+          this.message = "hello"
+        }
+      },
+    })
+  </script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Loop</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div>
+      <ul id="app-5">
+        <li v-for="fruit in fruits">
+          {{ fruit.id + " " + fruit.name  }}
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    var app5 = new Vue({
+      el: "#app-5",
+      data: {
+        fruits: [
+          {id: 1, name: "banana"},
+          {id: 2, name: "apple"},
+          {id: 3, name: "mango"},
+        ]
+      }
+    })
+  </script>
+</html>
