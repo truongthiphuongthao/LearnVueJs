@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="demo">
+      First name: <input type="text" v-model="firstname">
+      Last name: <input type="text" v-model="lastname">
+      Full name: <input type="text" v-model="fullname">
+      Year birth: <input type="text" v-model="yearbirth">
+      <br>
+      <p> First name: {{ firstname }}</p>
+      <p> Last name: {{ lastname }}</p>
+      <p> Full name: {{ fullname }}</p>
+      <p> Age: {{ age }}</p>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#demo',
+        data: {
+          firstname: '',
+          lastname: '',
+          fullname: '',
+          yearbirth: '',
+          age: '',
+        },
+        computed: {
+          firstname: {
+            get: function(){
+              return this.firstname
+            }
+          }
+        },
+        watch : {
+          firstname:  function(_firstname){
+            console.log("First name has changed: ", _firstname)
+            this.firstname = _firstname,
+            this.fullname = _firstname + " " +this.lastname
+          },
+          lastname: function(_lastname){
+            console.log("Last name has changed: ", _lastname )
+            this.lastname = _lastname
+            this.fullname = this.firstname + " "+ _lastname
+          },
+          fullname: function(_fullname){
+            console.log("Full name has changed: ", _fullname)
+            var space = _fullname.indexOf(' ')
+            if(space >=0){
+              let res_fullname = _fullname.split(" ")
+              this.firstname = res_fullname[0]
+              this.lastname = res_fullname[1]
+            }
+            else{
+              this.firstname = _fullname.trim()
+              this.lastname = ''
+            }
+          },
+          yearbirth: function(_yearbirth){
+            if(_yearbirth == ''){
+              this.age=''
+            }
+            else{
+              let today = new Date();
+              let year = today.getFullYear();
+              let res_age = parseInt(year) - parseInt(_yearbirth)
+              this.age = res_age
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="demo">
+      <input type="text" v-model="fullname">
+      <h1> {{firstname}} </h1>
+      <h1> {{lastname}} </h1>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#demo',
+        data: {
+          firstname: 'Truong',
+          lastname: 'Thao'
+        },
+        computed: {
+          fullname: {
+            get: function(){
+              return this.firstname + " " +this.lastname
+            },
+            set: function(value){
+              var fname = value.split(" ")
+              this.firstname = fname[0]
+              this.lastname = fname[1]
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

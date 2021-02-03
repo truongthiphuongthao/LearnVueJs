@@ -15,11 +15,11 @@
        Year Of Birth:  <input type="text" v-model="yearofbirth"> <br> <br>
        <button type="button" v-on:click="click">Calculate</button>
        <h1> Result </h1>
-       <p> {{ firstname }} </p>
-       <p> {{ lastname }}</p>
+       <p> First Name: {{ firstname }} </p>
+       <p> Last Name:  {{ lastname }}</p>
        <p> Full Name: {{ fullName }} </p>
-       <p> Email: {{ getEmail }} </p>
-       <p> Year of birth: {{ getYearOfBirth }} </p>
+       <p> Email: {{ email }} </p>
+       <p> Year of birth: {{ yearofbirth }} </p>
        <p> Age: {{ age }}</p>
        </center>
     </div>
@@ -28,6 +28,7 @@
     var app = new Vue({
       el: '#demo',
       data: {
+        // firstname: ''
         firstname: '',
         lastname: '',
         email: '',
@@ -38,19 +39,23 @@
         fullName: {
           get: function(){
             return this.firstname + " " + this.lastname
-          },
-          set: function (newValue) {
-            var names = newValue.split(' ')
-            this.firstName = names[0]
-            this.lastName = names[names.length - 1]
           }
         },
-        getEmail: function(){
-          return this.email
+        firstname: {
+          get: function(){
+            return this.firstname
+          }
         },
-        getYearOfBirth: function(){
-          return this.yearofbirth
+        email: {
+          get: function(){
+            return this.email
+          }
         },
+        yearofbirth: {
+          get: function(){
+            return this.yearofbirth
+          }
+        }
       },
       methods: {
         click: function(){
