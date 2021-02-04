@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="databinding">
+      <component v-bind:is="view"> </component>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+          el: '#databinding',
+          data: {
+            view: 'component1'
+          },
+          components: {
+            'component1' : {
+              template: '<button v-on:click="clickMe" > Click </button>',
+              methods: {
+                clickMe: function(){
+                  alert("hello")
+                }
+              }
+            }
+          },
+
+        })
+    </script>
+  </body>
+</html>

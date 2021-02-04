@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="text-success"> Danh sách các bài viết</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12" v-for="(title, index) in titles">
+            <h4> {{ index + 1}} . {{ title }}</h4>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el:'#app',
+      data: {
+        titles: [
+          'Vuejs',
+          'laravel',
+          'wordpress'
+        ]
+      }
+    })
+  </script>
+</html>

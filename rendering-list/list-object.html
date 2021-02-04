@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title></title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="text-success">Danh sách sản phẩm đèn LED chiếu sáng</h1>
+            </div>
+      </div>
+      <div class="row">
+          <div class="col-md-3" v-for="product in products">
+              <a :href="product.url" target="_blank">
+                  <img :src="product.image" class="img-thumbnail">
+              </a>
+              <h5 class="text-center text-info">{{ product.price }}</h5>
+              <h5 class="text-center">{{ product.name }}</h5>
+          </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        products: [
+          {name: 'Đèn led âm trần LIPER 8W series E', image: 'http://bigi.vn/public/images/products/liper/downlight/LP-DL08EW03-Y1.png', url: 'http://bigi.vn/san-pham/led-am-tran-sieu-mong-liper-8w-anh-sang-trang-lo-cat-%CF%8690-110mm-ma-lp-dl08ew03-y1', price: '161,000đ'},
+          {name: 'Đèn led âm trần LIPER 7W series F', image: 'http://bigi.vn/public/images/products/liper/downlight/LPDL-07A01-YX.png',url: 'http://bigi.vn/san-pham/led-am-tran-liper-7w-anh-sang-vang-lo-cat-%CF%8675-85mm-ma-lpdl-07a01-yx-w',price: '209,000đ'},
+          {name: 'Đèn led âm trần LIPER 10W series A', image: 'http://bigi.vn/public/images/products/liper/downlight/LPDL-10A01-YX.png',url: 'http://bigi.vn/san-pham/led-am-tran-liper-10w-anh-sang-trang-lo-cat-%CF%8695-105mm-ma-lpdl-10a01-yx-c',price: '257,000đ'},
+          {name: 'Đèn led âm trần LIPER 10W series A', image: 'http://bigi.vn/public/images/products/liper/downlight/LPDL-10A01-YX.png',url: 'http://bigi.vn/san-pham/led-am-tran-liper-10w-anh-sang-trang-lo-cat-%CF%8695-105mm-ma-lpdl-10a01-yx-c',price: '257,000đ'},
+          {name: 'Đèn đường công nghệ LED 200W', image: 'http://bigi.vn/public/image/product/p00942/led-den-duong-liper-lpstl-200a01-200w-chieu-sang-cong-cong-chieu-sang-do-thi-1000x1000.jpg',url: 'http://bigi.vn/san-pham/led-den-duong-liper-lpstl-200a01-cong-suat-200w',price: 'Liên hệ'}
+        ],
+      }
+    })
+  </script>
+</html>

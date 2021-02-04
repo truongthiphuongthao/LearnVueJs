@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="name">
+      <p> {{ name | afterChange() }}</p>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        name: 'Hello thursday'
+      },
+      filters: {
+        afterChange: function(value){
+          return value
+        }
+      }
+    })
+  </script>
+</html>

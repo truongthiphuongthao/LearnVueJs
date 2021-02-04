@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.js"></script>
+    <title></title>
+  </head>
+  <body>
+    <div id="app">
+      <p> <strong>Keyword:</strong><input type="text" v-model="keyword"> </p>
+      <p> <strong>Color:</strong>
+      Red: <input type="checkbox" v-model="colors" value="red"/>
+      Black: <input type="checkbox" v-model="colors" value="black"/> </p>
+      <p><strong>Size:</strong>
+      L: <input type="checkbox" v-model="sizes" value="L"/>
+      XL: <input type="checkbox" v-model="sizes" value="XL"/>
+      </p>
+      <p><strong>Sort By:</strong> <select v-model="sortBy">
+        <option value="name">Product Name</option>
+        <option value="color">Color</option>
+        <option value="size">Size</option>
+      </select>
+      </p>
+    <table border="1">
+    <caption>Total {{computedProducts.length}} Products</caption>
+    <tbody>
+      <tr v-for="(product, index) in computedProducts" :key="index">
+        <td>{{product.name}}</td>
+        <td>{{product.size}}</td>
+        <td>{{product.color}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+  </body>
+  <script type="text/javascript">
+    new Vue({
+    el: '#app',
+    data() {
+      return {
+        colors: [],
+        sizes: [],
+        products: [
+          {name:'test1', color:'red', size:'XL'},
+          {name:'test2', color:'black', size:'L'},
+          {name:'test3', color:'red', size:'L'},
+          {name:'test4', color:'black', size:'XL'},
+          {name:'test5', color:'red', size:'L'},
+          {name:'test6', color:'yellow', size:'XL'},
+          {name:'test7', color:'black', size:'L'}
+        ],
+        sortBy: 'name',
+        keyword: ''
+      }
+    },
+    computed: {
+      computedProducts: function () {
+        return this.products.filter((item) => {
+          return (this.keyword.length === 0 || item.name.includes(this.keyword)) &&
+          (this.colors.length === 0 || this.colors.includes(item.color)) &&
+          (this.sizes.length === 0 || this.sizes.includes(item.size))
+        }).sort((a, b) => {
+          return a[this.sortBy].toString().localeCompare(b[this.sortBy].toString())
+        })
+      }
+    }
+  })
+  </script>
+
+</html>

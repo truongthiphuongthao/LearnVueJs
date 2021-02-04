@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+/* Create three equal columns that floats next to each other */
+    .column1 {
+      float: left;
+      width: 22.33%;
+      padding: 10px;
+      height: 800px; /* Should be removed. Only for demonstration */
+    }
+    .column2 {
+      float: left;
+      width: 77.67%;
+      padding: 10px;
+      height: 800px; /* Should be removed. Only for demonstration */
+    }
+/* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+  </head>
+  <body>
+  <div class="row" id="app">
+
+    <div class="column1" style="border: 1px solid;">
+
+      <div clas="row">
+          <center>
+            <h4 style="margin-top:180px;"> Price </h4> <br> <br>
+            <select v-model="selectedFrom">
+              <option disabled value=""> From </option>
+              <option value="1000"> 1000 </option>
+              <option value="3000"> 3000 </option>
+              <option value="5000"> 5000 </option>
+           </select>
+            -
+           <select v-model="selectedTo">
+            <option disabled value=""> To </option>
+            <option> {{ selectedTo }} </option>
+          </select>
+        </center>
+      </div>
+
+        <br>
+
+        <div>
+          <center>
+            <h4 style="margin-left:20px;"> Tag: </h4>
+            <input type="text"  placeholder="Type text here" v-model="tag" /> <br> <br>
+            <input type="checkbox" v-model="check" value="icecream">
+            <label for="vehicle1"> Icecream </label><br>
+            <input type="checkbox" v-model="check" value="drink">
+            <label for="vehicle1"> Drink </label><br>
+            <input type="checkbox" v-model="check" value="cake">
+            <label for="vehicle1"> Cake </label><br>
+          </center>
+       </div>
+      </div>
+
+    <div class="column2" style="border: 1px solid">
+        <div class="row">
+          <div class="col-md-3" v-for="product in selectedProducts">
+              <img :src="product.image" class="img-thumbnail">
+              <h5 class="text-center text-info">{{ product.price }}</h5>
+              <h5 class="text-center">{{ product.name }}</h5>
+          </div>
+        </div>
+    </div>
+  </div>
+  </body>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        products: [
+          {name: 'cake-1', tag:["cake", "sweet"], image: 'https://png.pngtree.com/png-clipart/20190920/original/pngtree-yellow-cupcake-illustration-png-image_4665344.jpg', price: 1000},
+          {name: 'cake-2', tag:["cake", "sweet"], image: 'https://png.pngtree.com/png-clipart/20190920/original/pngtree-yellow-cupcake-illustration-png-image_4665344.jpg', price: 1500},
+          {name: 'cake-3', tag:["cake", "sweet"], image: 'https://png.pngtree.com/png-clipart/20190920/original/pngtree-yellow-cupcake-illustration-png-image_4665344.jpg', price: 2000},
+          {name: 'cake-4', tag:["cake", "sweet"], image: 'https://png.pngtree.com/png-clipart/20190920/original/pngtree-yellow-cupcake-illustration-png-image_4665344.jpg', price: 2500},
+          {name: 'drink-1', tag:["drink", "bevarage"], image: 'https://www.liquor.com/thmb/YmR2dtXJqIEtNzbzHrBpD1y6MlY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__12__31103100__Shirley-Temple-720x720-recipe-659e8198a2e840fc8ab7f48d9de60ad5.jpg', price: 2500},
+          {name: 'drink-2', tag:["drink", "bevarage"], image: 'https://www.liquor.com/thmb/YmR2dtXJqIEtNzbzHrBpD1y6MlY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__12__31103100__Shirley-Temple-720x720-recipe-659e8198a2e840fc8ab7f48d9de60ad5.jpg', price: 2500},
+          {name: 'drink-3', tag:["drink", "bevarage"], image: 'https://www.liquor.com/thmb/YmR2dtXJqIEtNzbzHrBpD1y6MlY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__12__31103100__Shirley-Temple-720x720-recipe-659e8198a2e840fc8ab7f48d9de60ad5.jpg', price: 2500},
+          {name: 'drink-4', tag:["drink", "bevarage"], image: 'https://www.liquor.com/thmb/YmR2dtXJqIEtNzbzHrBpD1y6MlY=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__liquor__2019__12__31103100__Shirley-Temple-720x720-recipe-659e8198a2e840fc8ab7f48d9de60ad5.jpg', price: 2500},
+          {name: 'icecream-1', tag:["icecream", "cold", "ice"], image: 'http://demo217.ccgdev.net/uploads/shops/2019_09/ice-cream.jpg', price: 2500},
+          {name: 'icecream-2', tag:["icecream", "cold", "ice"], image: 'http://demo217.ccgdev.net/uploads/shops/2019_09/ice-cream.jpg', price: 2500},
+          {name: 'icecream-3', tag:["icecream", "cold", "ice"], image: 'http://demo217.ccgdev.net/uploads/shops/2019_09/ice-cream.jpg', price: 2500},
+          {name: 'icecream-4', tag:["icecream", "cold", "ice"], image: 'http://demo217.ccgdev.net/uploads/shops/2019_09/ice-cream.jpg', price: 2500},
+        ],
+        selectedFrom: '',
+        selectedTo: '',
+        selectedProducts: [],
+        tag: '',
+        check: []
+      },
+      watch: {
+        selectedTo: function(_selectedTo){
+          if(_selectedTo == 2000){
+            this.selectedFrom = 1000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+          else if(_selectedTo == 4000 ){
+            this.selectedFrom = 3000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+          else if (_selectedTo== 6000){
+            this.selectedFrom = 5000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+        },
+        selectedFrom: function(_selectedFrom){
+          console.log("from: ",_selectedFrom)
+          if(_selectedFrom == 1000){
+            this.selectedTo = 2000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+          else if(_selectedFrom == 3000){
+            this.selectedTo = 4000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+          else if (_selectedFrom == 5000){
+            this.selectedTo = 6000
+            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
+          }
+
+        },
+        tag: function(_tag){
+          this.check = []
+          this.selectedProducts = this.getInTag(_tag)
+        },
+        check: function(_check){
+          this.selectedProducts = this.getFilter(_check)
+        },
+
+      },
+      methods: {
+        filter: function(_selectedFrom, _selectedTo){
+          let result = []
+          for(let product of this.products){
+            if(product.price >=_selectedFrom && product.price <= _selectedTo){
+              result.push(product)
+            }
+          }
+          return result
+        },
+        getInTag: function(_tag){
+          let result = []
+          for(let product of this.products){
+            for(let tag of product.tag){
+              if(tag == _tag){
+                result.push(product)
+              }
+            }
+          }
+          return result
+        },
+        getFilter: function(_check){
+          let result = []
+          for(let product of this.products){
+            for(let tag of product.tag){
+              for(let i of _check){
+                if(tag == i){
+                  result.push(product)
+                }
+              }
+            }
+          }
+          return result
+        },
+        getSelectedTo(){
+          return this.selectedTo
+        }
+      }
+    })
+  </script>
+</html>
