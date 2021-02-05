@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
       * {
-        box-sizing: border-box;
+         box-sizing: border-box;
       }
 /* Create three equal columns that floats next to each other */
     .column1 {
@@ -32,9 +32,8 @@
   </head>
   <body>
   <div class="row" id="app">
-
+   <!-- start column1 -->
     <div class="column1" style="border: 1px solid;">
-
       <div clas="row">
           <center>
             <h4 style="margin-top:180px;"> Price </h4> <br> <br>
@@ -51,23 +50,22 @@
           </select>
         </center>
       </div>
-
         <br>
-
         <div>
           <center>
             <h4 style="margin-left:20px;"> Tag: </h4>
             <input type="text"  placeholder="Type text here" v-model="tag" /> <br> <br>
             <input type="checkbox" v-model="check" value="icecream">
-            <label for="vehicle1"> Icecream </label><br>
+            <label for="icecream"> Icecream </label><br>
             <input type="checkbox" v-model="check" value="drink">
-            <label for="vehicle1"> Drink </label><br>
+            <label for="drink"> Drink </label><br>
             <input type="checkbox" v-model="check" value="cake">
-            <label for="vehicle1"> Cake </label><br>
+            <label for="cake"> Cake </label><br>
           </center>
        </div>
-      </div>
+      </div>  <!-- end colum1 -->
 
+    <!-- start column 2 -->
     <div class="column2" style="border: 1px solid">
         <div class="row">
           <div class="col-md-3" v-for="product in selectedProducts">
@@ -76,7 +74,8 @@
               <h5 class="text-center">{{ product.name }}</h5>
           </div>
         </div>
-    </div>
+    </div>   <!-- end column 2 -->
+
   </div>
   </body>
   <script>
@@ -135,10 +134,11 @@
 
         },
         tag: function(_tag){
-          this.check = []
+          console.log("check", this.check)
           this.selectedProducts = this.getInTag(_tag)
         },
         check: function(_check){
+
           this.selectedProducts = this.getFilter(_check)
         },
 
@@ -147,7 +147,7 @@
         filter: function(_selectedFrom, _selectedTo){
           let result = []
           for(let product of this.products){
-            if(product.price >=_selectedFrom && product.price <= _selectedTo){
+            if((product.price >=_selectedFrom) && (product.price <= _selectedTo)){
               result.push(product)
             }
           }
@@ -177,9 +177,6 @@
           }
           return result
         },
-        getSelectedTo(){
-          return this.selectedTo
-        }
       }
     })
   </script>
