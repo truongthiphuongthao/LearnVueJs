@@ -13,4 +13,14 @@ function getTag(){
     }
   }
 }
+function jsUcfirst(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function getUppercase(string) {
+  return string.toUpperCase()
+
+}
+console.log(jsUcfirst("phuong thao"))
+console.log(getUppercase("phuong thao"))
 getTag()

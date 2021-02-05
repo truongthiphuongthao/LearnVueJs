@@ -28,32 +28,16 @@
     var app = new Vue({
       el: '#demo',
       data: {
-        // firstname: ''
         firstname: '',
         lastname: '',
         email: '',
         yearofbirth: '',
-        age: '',
+        age: ''
       },
       computed: {
         fullName: {
-          get: function(){
+          get: function() {
             return this.firstname + " " + this.lastname
-          }
-        },
-        firstname: {
-          get: function(){
-            return this.firstname
-          }
-        },
-        email: {
-          get: function(){
-            return this.email
-          }
-        },
-        yearofbirth: {
-          get: function(){
-            return this.yearofbirth
           }
         }
       },
