@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="example">
+      {{ message }}
+    </div>
+  </body>
+  <script>
+    var vm = new Vue({
+      el: '#example',
+      data: {
+        message: '123'
+      }
+    })
+    vm.message = 'new data'
+    vm.$el.textContent === 'new message'
+    Vue.nextTick(function(){
+      vm.$el.textContent === 'new message'
+    })
+  </script>
+</html>

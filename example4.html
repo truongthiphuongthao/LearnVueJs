@@ -46,7 +46,9 @@
             -
            <select v-model="selectedTo">
             <option disabled value=""> To </option>
-            <option> {{ selectedTo }} </option>
+            <option value="2000"> 2000 </option>
+            <option value="4000"> 4000 </option>
+            <option value="6000"> 6000 </option>
           </select>
         </center>
       </div>
@@ -104,46 +106,21 @@
       },
       watch: {
         selectedTo: function(_selectedTo){
-          if(_selectedTo == 2000){
-            this.selectedFrom = 1000
-            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
-          else if(_selectedTo == 4000 ){
-            this.selectedFrom = 3000
-            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
-          else if (_selectedTo== 6000){
-            this.selectedFrom = 5000
-            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
+            this.selectedProducts = this.filter(this.selectedFrom, _selectedTo)
         },
         selectedFrom: function(_selectedFrom){
-          console.log("from: ",_selectedFrom)
-          if(_selectedFrom == 1000){
-            this.selectedTo = 2000
             this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
-          else if(_selectedFrom == 3000){
-            this.selectedTo = 4000
-            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
-          else if (_selectedFrom == 5000){
-            this.selectedTo = 6000
-            this.selectedProducts = this.filter(_selectedFrom, this.selectedTo)
-          }
-
         },
         tag: function(_tag){
           console.log("check", this.check)
           this.selectedProducts = this.getInTag(_tag)
         },
         check: function(_check){
-
           this.selectedProducts = this.getFilter(_check)
         },
-
       },
       methods: {
+
         filter: function(_selectedFrom, _selectedTo){
           let result = []
           for(let product of this.products){
@@ -153,6 +130,7 @@
           }
           return result
         },
+
         getInTag: function(_tag){
           let result = []
           for(let product of this.products){
@@ -164,6 +142,7 @@
           }
           return result
         },
+
         getFilter: function(_check){
           let result = []
           for(let product of this.products){
@@ -176,8 +155,10 @@
             }
           }
           return result
-        },
+        }
+
       }
     })
+    Vue.config.devtools = true;
   </script>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+  </head>
+  <body>
+    <div id="example">
+      <p> {{ message }} </p>
+      {{ updateMessage() }}
+    </div>
+  </body>
+  <script>
+    var app = new Vue({
+      el: '#example',
+      data: {
+        message: 'not updated'
+      },
+      methods: {
+        updateMessage: function(){
+          this.message = 'updated'
+          console.log(this.$el.textContent)
+          this.$nextTick(function(){
+            return this.$el.textContent
+          })
+        }
+      }
+    })
+  </script>
+</html>
