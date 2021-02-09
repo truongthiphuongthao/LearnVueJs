@@ -6,26 +6,34 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
   </head>
   <body>
-    <div id="example">
-      <p> {{ message }} </p>
-      {{ updateMessage() }}
+    <div id="demo">
+      <span> {{ message }}</span>
     </div>
   </body>
   <script>
-    var app = new Vue({
-      el: '#example',
-      data: {
-        message: 'not updated'
-      },
-      methods: {
-        updateMessage: function(){
-          this.message = 'updated'
-          console.log(this.$el.textContent)
-          this.$nextTick(function(){
-            return this.$el.textContent
-          })
-        }
+  var app = new Vue({
+    el: '#demo',
+    data: {
+      message: "hello"
+    },
+    watch: {
+      message: async function(){
+        console.log("message:" ,await this.updateMessage())
+        // this.message = this.updateMessage()
       }
-    })
+    },
+    methods: {
+      updateMessage: async function(){
+        let result = this.$el.textContent
+        console.log("before: ", result)
+        await this.$nextTick(function(){
+          console.log("after call next Tick: ", this.$el.textContent)
+          result = this.$el.textContent
+        })
+        return result
+      }
+    }
+  })
+  Vue.config.devtools = true;
   </script>
 </html>
